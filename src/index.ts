@@ -8,6 +8,7 @@ import {
   deleteById,
   createImage,
 } from "./controllers/server.js";
+import { login, signup } from "./controllers/users.js";
 import multer from "multer";
 
 const storage = multer.diskStorage({
@@ -31,6 +32,8 @@ app.post("/", create);
 app.put("/:id", updateById);
 app.delete("/:id", deleteById);
 app.post("/:id/image", upload.single("image"), createImage);
+app.post("/users/login", login);
+app.post("/users/signup", signup);
 
 app.listen(port, () => {
   console.log(`Server partito correttamente, porta http://localhost:${port}`);

@@ -18,21 +18,9 @@ const setupDb = async () => {
     name TEXT NOT NULL,
     image TEXT
   );
-
-  DROP TABLE IF EXISTS users;
-
-  CREATE TABLE users(
-    id SERIAL NOT NULL,
-    username TEXT NOT NULL,
-    password TEXT NOT NULL,
-    token TEXT
-  )
   `);
 
   await db.none(`INSERT INTO planets (name) VALUES ('Earth'),('Mars')`);
-  await db.none(
-    `INSERT INTO users (username,password) VALUES ('User', 'Password')`
-  );
 };
 setupDb();
 console.log(db);
