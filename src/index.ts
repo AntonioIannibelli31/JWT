@@ -11,6 +11,7 @@ import {
 import { login, signup, logout } from "./controllers/users.js";
 import multer from "multer";
 import authorize from "./authorize.js";
+import "./passport.js";
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
