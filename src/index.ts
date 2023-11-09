@@ -8,8 +8,9 @@ import {
   deleteById,
   createImage,
 } from "./controllers/server.js";
-import { login, signup } from "./controllers/users.js";
+import { login, signup, logout } from "./controllers/users.js";
 import multer from "multer";
+import authorize from "./authorize.js";
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -34,6 +35,7 @@ app.delete("/:id", deleteById);
 app.post("/:id/image", upload.single("image"), createImage);
 app.post("/users/login", login);
 app.post("/users/signup", signup);
+app.get("/users/logout", authorize, logout);
 
 app.listen(port, () => {
   console.log(`Server partito correttamente, porta http://localhost:${port}`);
